@@ -92,8 +92,10 @@ def TitanicLogistic():
     print(accuracy_score(ytest,prediction))
 
 def main():
+    
     print("Supervised Machine Learning")
     print("Logistic Regression on Titanic Dataset")
     TitanicLogistic()
+    
 if __name__ == "__main__":
     main()
