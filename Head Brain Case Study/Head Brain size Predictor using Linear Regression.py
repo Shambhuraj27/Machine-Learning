@@ -4,7 +4,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 
 def HeadBrain():
-    data = pd.read_csv("HeadBrain .csv")
+    data = pd.read_csv("HeadBrain.csv")
     print("Size of Dataset",data.shape)
 
     X = data["Head Size(cm^3)"].values
