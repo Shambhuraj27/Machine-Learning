@@ -26,6 +26,7 @@ def BallPredictor(weight,surface):
         print("Your object looks like Cricket ball")
 
 def main():
+    
     print("----------- Ball Predictor Case Study -----------")
     print("Please enter the weight of your object in grams")
     weight = int(input())
