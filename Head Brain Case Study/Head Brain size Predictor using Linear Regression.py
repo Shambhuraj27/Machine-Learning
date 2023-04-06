@@ -1,7 +1,6 @@
 
 import pandas as pd
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score
 
 def HeadBrain():
     data = pd.read_csv("HeadBrain .csv")
@@ -14,8 +13,10 @@ def HeadBrain():
     n = len(X)
 
     reg = LinearRegression()
+    
     reg = reg.fit(X,Y)
     y_pred = reg.predict(X)
+    
     r2 = reg.score(X,Y)
     print(r2)
 
