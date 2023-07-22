@@ -5,7 +5,7 @@ from sklearn import tree
 # Rough 1
 # Smooth 0
 
-# Tennis 1
+# Tennis 1 
 # Cricket 2
 
 def BallPredictor(weight,surface):
