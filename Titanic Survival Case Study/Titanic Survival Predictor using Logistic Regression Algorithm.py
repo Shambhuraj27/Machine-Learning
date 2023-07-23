@@ -28,7 +28,7 @@ def TitanicLogistic():
     countplot(data=titanic_data,x=target).set_title("Survived and non survived passengers based on Gender")
     show()
 
-    print("Visualisaion : Survived and non survived passengers based on the Passenger class")
+    print("Visualisation : Survived and non survived passengers based on the Passenger class")
     figure()
     target = "Survived"
     countplot(data=titanic_data,x=target,hue="Pclass").set_title("Survived and non survived passengers baesed on the Pasenger class")
