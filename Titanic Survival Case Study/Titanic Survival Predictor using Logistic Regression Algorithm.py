@@ -82,12 +82,6 @@ def TitanicLogistic():
     prediction = logmodel.predict(xtest)
 
     # Step 5 : Calculate Accuracy
-    print("Classification report of Logistic Regression is :")
-    print(classification_report(ytest,prediction))
-
-    print("Confusion matrix of Logistic Regression is :")
-    print(confusion_matrix(ytest,prediction))
-
     print("Accuracy of Logistic Regression is :")
     print(accuracy_score(ytest,prediction))
 
