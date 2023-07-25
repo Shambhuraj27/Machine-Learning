@@ -8,10 +8,7 @@ def HeadBrain():
 
     X = data["Head Size(cm^3)"].values
     Y = data["Brain Weight(grams)"].values
-
-    X = X.reshape((-1,1))
-    n = len(X)
-
+    
     reg = LinearRegression()
     
     reg = reg.fit(X,Y)
