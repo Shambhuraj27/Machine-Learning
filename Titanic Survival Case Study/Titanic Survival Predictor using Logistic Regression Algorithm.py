@@ -1,4 +1,5 @@
 
+
 import math
 import numpy as np
 import pandas as pd
@@ -19,9 +20,9 @@ def TitanicLogistic():
     print("First 5 entries from loaded dataset")
     print(titanic_data.head())
 
-    print("Number of pasengers are"+str(len(titanic_data)))
-
-    # Step 2 : Anslyze data
+    print("Number of passengers are" +str(len(titanic_data)))
+    print("---------------------------------------------------")
+    # Step 2 : Analyze data
     print("Visualisation : Survived and non survived passengers")
     figure()
     target = "Survived"
@@ -47,7 +48,7 @@ def TitanicLogistic():
     # Step 3 : Data Cleaning
     titanic_data.drop("zero",axis = 1,inplace = True)
 
-    print("First 5 entries from loaded dataset agter removing zero column")
+    print("First 5 entries from loaded dataset after removing zero column")
     print(titanic_data.head(5))
 
     print("Values of Sex column")
@@ -65,7 +66,7 @@ def TitanicLogistic():
     titanic_data = pd.concat([titanic_data,Sex,Pclass],axis = 1)
     print(titanic_data.head(5))
 
-    print("Values of dataset after removing irrelevent columns")
+    print("Values of dataset after removing irrelevant columns")
     titanic_data.drop(["Sex","sibsp","Parch","Embarked"],axis = 1,inplace = True)
     print(titanic_data.head(5))
 
@@ -75,7 +76,10 @@ def TitanicLogistic():
     # Step 4 : Data Training
     xtrain,xtest,ytrain,ytest = train_test_split(x,y,test_size=0.5)
 
-    logmodel = LogisticRegression()
+    xtrain.columns = xtrain.columns.astype(str)
+    xtest.columns = xtest.columns.astype(str)
+
+    logmodel = LogisticRegression(max_iter=1000)
     logmodel.fit(xtrain,ytrain)
 
     # Step 5 : Data Testing
@@ -86,10 +90,8 @@ def TitanicLogistic():
     print(accuracy_score(ytest,prediction))
 
 def main():
-    
     print("Supervised Machine Learning")
     print("Logistic Regression on Titanic Dataset")
     TitanicLogistic()
-    
 if __name__ == "__main__":
     main()
