@@ -4,7 +4,6 @@ from sklearn.metrics import accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 
-
 def Iris():
     iris = load_iris()
 
@@ -23,10 +22,8 @@ def Iris():
     return Accuracy
 
 def main():
-    
     print("Iris dataset using Decision tree algorithm")
     Accuracy = Iris()
     print("Accuracy of dataset using Decison tree algorithm is ",Accuracy*100,"%")
-    
 if __name__ == "__main__":
     main()
