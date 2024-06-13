@@ -31,10 +31,8 @@ def WinePredictor():
     print("Accuracy:",metrics.accuracy_score(y_test,knn.predict(x_test)))
 
 def main():
-    
     print("Wine Predictor application using KNN algorithn")
     WinePredictor()
-    
 if __name__ == "__main__":
     main()
 
