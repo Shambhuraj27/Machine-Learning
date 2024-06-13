@@ -5,7 +5,7 @@ from sklearn import tree
 # Rough 1
 # Smooth 0
 
-# Tennis 1 
+# Tennis 1
 # Cricket 2
 
 def BallPredictor(weight,surface):
@@ -20,18 +20,19 @@ def BallPredictor(weight,surface):
 
     # Perform the testing
     ret = obj.predict([weight,surface])
+
     if ret == 1:
         print("Your object looks like Tennis ball")
     else:
         print("Your object looks like Cricket ball")
 
 def main():
-    
     print("----------- Ball Predictor Case Study -----------")
     print("Please enter the weight of your object in grams")
     weight = int(input())
     print("Please enter thr type of surface of your object (Rough/Smooth)")
     surface = input()
+
     if surface.lower() == "rough":
         surface = 1
     elif surface.lower() == "smooth":
@@ -39,6 +40,7 @@ def main():
     else:
         print("Invalid type of surface")
         exit()
+
     BallPredictor(weight,surface)
 
 if __name__ == "__main__":
