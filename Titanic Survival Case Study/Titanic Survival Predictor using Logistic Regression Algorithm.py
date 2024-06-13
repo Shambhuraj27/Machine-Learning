@@ -1,15 +1,8 @@
 
-
-import math
-import numpy as np
 import pandas as pd
-import seaborn as sns
 from seaborn import countplot
-import matplotlib.pyplot as plt
 from matplotlib.pyplot import figure,show
 from sklearn.metrics import accuracy_score
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 
@@ -19,20 +12,25 @@ def TitanicLogistic():
 
     print("First 5 entries from loaded dataset")
     print(titanic_data.head())
-
-    print("Number of passengers are" +str(len(titanic_data)))
+    print("Number of passengers are :",(len(titanic_data)))
     print("---------------------------------------------------")
     # Step 2 : Analyze data
     print("Visualisation : Survived and non survived passengers")
+    figure() 
+    target = "Survived" 
+    countplot(data=titanic_data,x=target).set_title("Survived and non survived passengers") # Used to show the counts of observations in each categorical bin using bars.
+    show() 
+
+    print("Visualisation : Survived and non survived passengers based on the Gender")
     figure()
     target = "Survived"
-    countplot(data=titanic_data,x=target).set_title("Survived and non survived passengers based on Gender")
+    countplot(data=titanic_data,x=target,hue="Sex").set_title("Survived and non survived passengers based on the Gender")
     show()
 
     print("Visualisation : Survived and non survived passengers based on the Passenger class")
     figure()
     target = "Survived"
-    countplot(data=titanic_data,x=target,hue="Pclass").set_title("Survived and non survived passengers baesed on the Pasenger class")
+    countplot(data=titanic_data,x=target,hue="Pclass").set_title("Survived and non survived passengers based on Passenger class")
     show()
 
     print("Visualisation : Survived and non survived passengers based on Age")
@@ -40,9 +38,9 @@ def TitanicLogistic():
     titanic_data["Age"].plot.hist().set_title("Survived and non survived passengers based on Age")
     show()
 
-    print("Visualisation : Survived and non survived passengers based on the fare")
+    print("Visualisation : Survived and non survived passengers based on the Fare")
     figure()
-    titanic_data["Fare"].plot.hist().set_title("Survived and non survived passengers based on Fare")
+    titanic_data["Fare"].plot.hist().set_title("Visualisation : Survived and non survived passengers based on the Fare")
     show()
 
     # Step 3 : Data Cleaning
@@ -51,9 +49,11 @@ def TitanicLogistic():
     print("First 5 entries from loaded dataset after removing zero column")
     print(titanic_data.head(5))
 
+    # Convert categorical variables into dummy variables
     print("Values of Sex column")
     print(pd.get_dummies(titanic_data["Sex"]))
 
+    # Drop one dummy variable to avoid multicollinearity
     print("Values of Sex column after removing one field")
     Sex = pd.get_dummies(titanic_data["Sex"],drop_first = True)
     print(Sex.head(5))
@@ -62,7 +62,7 @@ def TitanicLogistic():
     Pclass = pd.get_dummies(titanic_data["Pclass"],drop_first=True)
     print(Pclass.head(5))
 
-    print("Values of Pclass column after removing new columns")
+    print("Values of dataset after concatenating new columns")
     titanic_data = pd.concat([titanic_data,Sex,Pclass],axis = 1)
     print(titanic_data.head(5))
 
@@ -86,7 +86,7 @@ def TitanicLogistic():
     prediction = logmodel.predict(xtest)
 
     # Step 5 : Calculate Accuracy
-    print("Accuracy of Logistic Regression is :")
+    print("Accuracy of dataset using Logistic Regression is :")
     print(accuracy_score(ytest,prediction))
 
 def main():
