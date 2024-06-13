@@ -32,10 +32,8 @@ def PlayPredictor(data_path):
     print(Predicted)
 
 def main():
-
     print("Play Predictor application using K Nearest Neighbor")
     PlayPredictor("PlayPredictor.csv")
-
 if __name__ == "__main__":
     main()
 
