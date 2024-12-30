@@ -1,4 +1,5 @@
 
+import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -11,39 +12,39 @@ def wine_predictor():
     dataset = pd.read_csv("WinePredictor.csv")
     print(dataset.head())
 
-    x = dataset.drop("Class",axis=1)
+    x = dataset.drop("Class", axis=1)
     y = dataset["Class"]
-    
-    # Feature scaling for scale the training features
-    sc = StandardScaler()
-    print(sc.fit(x))
-    print(sc.transform(x))
-    x = pd.DataFrame(sc.transform(x),columns=x.columns)
-    print(x.head())
     
     # Visualization 
     print("Visualizing pairplot...")
     sns.pairplot(dataset, hue='Class', diag_kind='kde', markers=["o", "s", "D"])
     plt.title("Pairplot of Features")
+    plt.savefig(r"C:\Users\shamb\Desktop\self\wine_dataset.png")
     plt.show()
     
     # Split the data into training and testing
-    xtrain,xtest,ytrain,ytest = train_test_split(x,y,test_size=0.3,random_state=42)
+    xtrain, xtest, ytrain, ytest = train_test_split(x, y, test_size=0.3, random_state=42)
 
-    reg = LogisticRegression(max_iter=10000,multi_class="multinomial",class_weight="balanced")
+    # Feature scaling for scaling the training features
+    sc = StandardScaler()
+    scaled_x_train = sc.fit_transform(xtrain)
+    scaled_x_test = sc.transform(xtest)
     
-    # Train the model
-    reg.fit(xtrain,ytrain)
+    # Initialize Logistic Regression model
+    reg = LogisticRegression(max_iter=10000)
     
-    # Test the model
-    prediction = reg.predict(xtest)
+    # Train the model with scaled training data
+    reg.fit(scaled_x_train, ytrain)
+    
+    # Test the model using scaled test data
+    prediction = reg.predict(scaled_x_test)  # Use numpy array directly for prediction
     
     # Calculate accuracy
-    Accuracy = accuracy_score(ytest,prediction)
-    print("Accuracy using Logistic Regression :",Accuracy*100,"%")
+    accuracy = accuracy_score(ytest, prediction)
+    print("Accuracy using Logistic Regression:", accuracy * 100, "%")
 
     # Custom input
-    custom_input =[[13.24,2.59,2.87,21.0,118,2.80,2.69,0.39,1.82,4.32,1.04,2.93,735]]
+    custom_input = [["Enter input here to predict"]]
     
     # Scale custom input for prediction
     custom_input_scaled = sc.transform(custom_input)
@@ -53,5 +54,6 @@ def wine_predictor():
 def main():
     print("Wine predictor")
     wine_predictor()
+
 if __name__ == "__main__":
     main()
