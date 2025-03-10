@@ -2,7 +2,7 @@
 
 This repository contains a collection of machine learning case studies, covering classification, regression, and predictive modeling techniques. Each case study demonstrates how to preprocess data, build models, and evaluate performance using different ML algorithms.
 
-## 📂 Case Studies Included
+## Case Studies Included
 
 1. **Fraud Detection Case Study**  
    - Detects fraudulent transactions using **Logistic Regression** and **Random Forest**.  
