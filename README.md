@@ -1,4 +1,4 @@
-# Machine Learning Case Studies 🚀
+# Machine Learning Case Studies 
 
 This repository contains a collection of machine learning case studies, covering classification, regression, and predictive modeling techniques. Each case study demonstrates how to preprocess data, build models, and evaluate performance using different ML algorithms.
 
