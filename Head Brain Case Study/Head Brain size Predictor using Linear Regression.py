@@ -1,7 +1,7 @@
 
 import pandas as pd
-from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
 
 def HeadBrain():
     data = pd.read_csv("HeadBrain .csv")
